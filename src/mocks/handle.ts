@@ -29,8 +29,7 @@ export const handlers = [
     return res()
   }),
   graphql.query(GET_CART, (req, res, ctx) => {
-    console.log(res, 'resssssss')
-    return res()
+    return res(ctx.data(cartData))
   }),
   graphql.mutation(ADD_CART, (req, res, ctx) => {
     const newData = {...cartData}
@@ -41,6 +40,7 @@ export const handlers = [
             ...newData[id],
             amount: (newData[id].amount || 0) + 1
         }
+        console.log('neeeeeeeeeew', newData[id])
     }else {
         const found = mockProducts.find(item => item.id === req.variables.id)
         if (found) {
@@ -51,7 +51,7 @@ export const handlers = [
         }
     }
     cartData = newData
-    console.log('ccccccc', res(ctx.data(cartData)))
+    console.log(cartData, 'cartDD!!')
     return res(ctx.data(cartData))
   }),
 ]
