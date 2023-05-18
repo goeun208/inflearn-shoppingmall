@@ -1,12 +1,22 @@
 @import 'products';
 @import 'cart';
+@import 'payment';
 
 body {
     margin: 0;
+    background-color: #f3f7ff;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
 }
 
 #root {
     max-width: 900px;
+    margin: 0 auto;
+    background-color: #f3f7ff;
+
 }
 
 .gnb {
@@ -14,9 +24,23 @@ body {
         list-style: none;
         display: flex;
         flex-direction: row;
+        align-items: center;
         gap: 10px;
         padding: 10px;
+        height: 30px;
         margin: 0;
-
+        background-color: #93b6fc;
+        * {
+            text-decoration: none;
+            padding-left: 10px;
+            color: white;
+            font-size: 1rem;
+            margin: 0;
+            padding: 0;
+        }
+        *:hover {
+            color: #1146ae;
+            font-weight: 600;
+        }
     }
 }
