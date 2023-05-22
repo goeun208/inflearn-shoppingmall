@@ -1,7 +1,8 @@
-import { Query, useMutation } from "react-query"
+import { useMutation } from "react-query"
 import { CARTType, DELETE_CART, UPDATE_CART } from "../../graphql/cart"
 import { QueryKeys, getClient, graphqlFetcher } from "../../queryClient"
 import { forwardRef, ForwardedRef, SyntheticEvent } from "react"
+import ItemData from "./itemData"
 
 const CartItem = ({ id, imageUrl, price, title, amount }: CARTType, ref: ForwardedRef<HTMLInputElement>) => {
 
@@ -52,21 +53,19 @@ const CartItem = ({ id, imageUrl, price, title, amount }: CARTType, ref: Forward
 
     return (
         <li className="cart-item">
-      <input className="cart-item__checkbox" type="checkbox" name="select-item" />
-      <img className="cart-item__image" src={imageUrl} />
-      <p className="cart-item__price">{price}</p>
-      <p className="cart-item__title">{title}</p>
-      <input
-        className="cart-item__amount"
-        type="number"
-        value={amount}
-        min={1}
-        onChange={handleUpdateAmount}
-      />
-      <button className="cart-item__button" type="button" onClick={handleDeleteItem}>
-        삭제
-      </button>
-    </li>
+            <input className="cart-item__checkbox" type="checkbox" name="select-item" ref={ref} />
+            <ItemData imageUrl={imageUrl} price={price} title={title} />
+            <input
+                className="cart-item__amount"
+                type="number"
+                value={amount}
+                min={1}
+                onChange={handleUpdateAmount}
+            />
+            <button className="cart-item__button" type="button" onClick={handleDeleteItem}>
+                삭제
+            </button>
+        </li>
     )
 }
 
