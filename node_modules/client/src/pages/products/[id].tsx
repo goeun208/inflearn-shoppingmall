@@ -7,15 +7,15 @@ import { GET_PRODUCT, PRODUCT } from "../../graphql/products"
 const ProductDetailPage = () => {
     const { id } = useParams()
 
-    const { data } = useQuery<PRODUCT>([QueryKeys.PRODUCTS, id], () =>
-        graphqlFetcher<PRODUCT>(GET_PRODUCT, { id }))
+    const { data } = useQuery<{ product: PRODUCT}>([QueryKeys.PRODUCTS, id], () =>
+        graphqlFetcher<{ product: PRODUCT}>(GET_PRODUCT, { id }))
 
     if (!data) return null;
 
     return (
         <div>
             <h2>상품상세</h2>
-            <ProductDetail item={data} />
+            <ProductDetail item={data.product} />
         </div>
     )
 }
