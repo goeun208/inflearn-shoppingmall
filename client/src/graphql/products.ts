@@ -6,7 +6,7 @@ export type PRODUCT = {
     price: number
     title: string
     description: string
-    createdAt: string
+    createdAt: number
 }
 
 export type PRODUCTS = {
@@ -14,24 +14,28 @@ export type PRODUCTS = {
 }
 
 const GET_PRODUCTS = gql`
-    query GET_PRODUCTS {
-        id
-        imageUrl
-        price
-        title
-        description
-        createdAt
+    query GET_PRODUCTS($cursor: ID, $showDeleted: Boolean) {
+        products(cursor: $cursor, showDeleted: $showDeleted) {
+            id
+            imageUrl
+            price
+            title
+            description
+            createdAt
+        }
     }
 `
 
 export const GET_PRODUCT = gql`
-    query GET_PRODUCT($id: string) {
-        id
-        imageUrl
-        price
-        title
-        description
-        createdAt
+    query GET_PRODUCT($id: ID!) {
+        product(id: $id) {
+            id
+            imageUrl
+            price
+            title
+            description
+            createdAt
+        }
     }
 `
 
