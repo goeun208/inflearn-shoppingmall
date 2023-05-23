@@ -3,7 +3,7 @@ import { CARTType } from "../../graphql/cart"
 import CartItem from "./item"
 import { useRecoilState } from "recoil"
 import { checkedCartState } from "../../recoils/cart"
-import WillPay from "../willPay/willPay"
+import WillPay from "../willPay"
 import { useNavigate } from "react-router-dom"
 
 const CartList = ({ items }: { items: CARTType[] }) => {
@@ -15,17 +15,21 @@ const CartList = ({ items }: { items: CARTType[] }) => {
   const checkboxRefs = items.map(() => createRef<HTMLInputElement>())
   const [formData, setFormData] = useState<FormData>()
 
+  const enabledItems = items.filter(item => item.product.createdAt)
+
   const setAllCheckedFromItems = () => {
     if (!formRef.current) return
     const data = new FormData(formRef.current)
     const selectedCount = data.getAll('select-item').length
-    const allChecked = (selectedCount === items.length)
+    const allChecked = (selectedCount === enabledItems.length)
     formRef.current.querySelector<HTMLInputElement>('.select-all')!.checked = allChecked
   }
 
   const setItemsCheckedFromAll = (targetInput: HTMLInputElement) => {
     const allChecked = targetInput.checked
-    checkboxRefs.forEach(inputElem => {
+    checkboxRefs.filter(inputElem => {
+      return !inputElem.current!.disabled
+    }).forEach(inputElem => {
       inputElem.current!.checked = allChecked
     })
   }

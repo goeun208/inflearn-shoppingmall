@@ -1,7 +1,7 @@
 import { useRecoilState } from "recoil"
 import { useState } from "react"
 import { checkedCartState } from "../../recoils/cart"
-import WillPay from "../willPay/willPay"
+import WillPay from "../willPay"
 import PaymentModal from "./modal"
 import { useNavigate } from "react-router-dom"
 import { useMutation } from "react-query"

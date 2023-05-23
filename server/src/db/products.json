@@ -779,23 +779,20 @@
     "imageUrl": "https://picsum.photos/id/97/200/150",
     "price": 1500,
     "title": "임시상품_97",
-    "description": "임시상세내용97",
-    "createdAt": 1644170841540
+    "description": "임시상세내용97"
   },
   {
     "id": "9c8523c4-b9bc-4791-bf9f-c8e39e72583c",
     "imageUrl": "https://picsum.photos/id/98/200/150",
     "price": 5000,
-    "title": "임시상품_98",
-    "description": "임시상세내용98",
-    "createdAt": 1644188841540
+    "title": "임시상품_989",
+    "description": "임시상세내용98"
   },
   {
     "id": "c69db165-11e1-4b8b-b480-25f50aabace6",
     "imageUrl": "https://picsum.photos/id/99/200/150",
     "price": 5500,
     "title": "임시상품_99",
-    "description": "임시상세내용99",
-    "createdAt": 1644206841540
+    "description": "임시상세내용99"
   }
 ]

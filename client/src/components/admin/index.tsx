@@ -1,18 +1,20 @@
 import { useInfiniteQuery } from "react-query"
 import { graphqlFetcher, QueryKeys } from "../../queryClient"
 import GET_PRODUCTS, { PRODUCTS } from "../../graphql/products"
-import ProductList from "../../components/product/list"
-import { useRef, useEffect } from "react"
+import { useState, useRef, useEffect } from "react"
 import useIntersection from "../../components/hooks/useIntersection"
+import AddForm from "../../components/admin/addForm"
+import AdminList from "./list"
 
-const ProductListPage = () => {
+const Admin = () => {
+    const [editingIndex, setEditingIndex] = useState<number | null>(null)
     const fetchMoreRef = useRef<HTMLDivElement>(null)
     const intersecting = useIntersection(fetchMoreRef)
 
     const { data, isSuccess, isFetchingNextPage, fetchNextPage, hasNextPage } = useInfiniteQuery<PRODUCTS>(
-        [QueryKeys.PRODUCTS, 'products'],
+        [QueryKeys.PRODUCTS, 'admin'],
         ({pageParam = ''}) =>
-        graphqlFetcher<PRODUCTS>(GET_PRODUCTS, { cursor: pageParam }),
+        graphqlFetcher<PRODUCTS>(GET_PRODUCTS, { cursor: pageParam, showDeleted: true }),
         {
             getNextPageParam: (lastPage) => {
                 return lastPage.products.at(-1)?.id
@@ -25,13 +27,16 @@ const ProductListPage = () => {
         fetchNextPage()
     }, [intersecting])
 
+    const startEdit = (index: number) => () => setEditingIndex(index)
+    const doneEdit = () => setEditingIndex(null)
+
     return (
         <div>
-            <h2>상품목록</h2>
-            <ProductList list={data?.pages || []} />
+            <AddForm />
+            <AdminList list={data?.pages || []} editingIndex={editingIndex} startEdit={startEdit} doneEdit={doneEdit} />
             <div ref={fetchMoreRef} />
         </div>
     )
 }
 
-export default ProductListPage
+export default Admin
