@@ -4,12 +4,14 @@ import { QueryKeys, getClient, graphqlFetcher } from "../../queryClient"
 import { forwardRef, ForwardedRef, SyntheticEvent } from "react"
 import ItemData from "./itemData"
 
-const CartItem = ({ id, product: { imageUrl, price, title}, amount }: CARTType
-    , ref: ForwardedRef<HTMLInputElement>) => {
-
+const CartItem = (
+    { id, product: { imageUrl, price, title, createdAt}, amount }: CARTType
+    , ref: ForwardedRef<HTMLInputElement>
+) => {
     const queryClient = getClient()
     const { mutate: updateCart } = useMutation(
-        ({ id, amount }: { id: string; amount: number }) => graphqlFetcher(UPDATE_CART, { id, amount }),
+        ({ id, amount }: { id: string; amount: number }) => graphqlFetcher<{ updateCart: any; }>
+        (UPDATE_CART, { id, amount }),
         {
             onMutate: async ({ id, amount }) => {
                 await queryClient.cancelQueries(QueryKeys.CART)
@@ -60,15 +62,21 @@ const CartItem = ({ id, product: { imageUrl, price, title}, amount }: CARTType
 
     return (
         <li className="cart-item">
-            <input className="cart-item__checkbox" type="checkbox" name="select-item" ref={ref} />
+            <input className="cart-item__checkbox" type="checkbox" name="select-item" ref={ref} disabled={!createdAt} />
             <ItemData imageUrl={imageUrl} price={price} title={title} />
-            <input
-                className="cart-item__amount"
-                type="number"
-                value={amount}
-                min={1}
-                onChange={handleUpdateAmount}
-            />
+            {!createdAt ? 
+            (
+                <div>삭제된 상품입니다.</div>
+            ) : (
+                <input
+                    className="cart-item__amount"
+                    type="number"
+                    value={amount}
+                    min={1}
+                    onChange={handleUpdateAmount}
+                />
+            )}
+            
             <button className="cart-item__button" type="button" onClick={handleDeleteItem}>
                 삭제
             </button>
