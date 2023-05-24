@@ -1,7 +1,6 @@
 import { useRecoilValue } from "recoil"
 import { checkedCartState } from "../../recoils/cart"
 import ItemData from "../cart/itemData"
-import { useNavigate } from "react-router-dom"
 import { SyntheticEvent } from "react"
 
 const WillPay = ({

@@ -2,7 +2,6 @@ import { Link } from "react-router-dom";
 import { DELETE_PRODUCT, MutableProduct, PRODUCT, UPDATE_PRODUCT } from "../../graphql/products";
 import { useMutation } from "react-query";
 import { QueryKeys, getClient, graphqlFetcher } from "../../queryClient";
-import { ADD_CART } from "../../graphql/cart";
 import { SyntheticEvent } from "react";
 import arrToObj from "../../util/arrToObj";
 

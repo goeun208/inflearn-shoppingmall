@@ -1,4 +1,3 @@
-import { ReactChild } from 'react'
 import { createPortal } from 'react-dom'
 
 const ModalPortal = ({ children }: { children: any }) => {
