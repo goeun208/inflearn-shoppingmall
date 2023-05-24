@@ -1,6 +1,6 @@
-import { CARTType } from "../../graphql/cart"
+import { PRODUCT } from "../../graphql/products"
 
-const ItemData = ({imageUrl, price, title}: Pick<CARTType, 'imageUrl' | 'price' | 'title'> ) => (
+const ItemData = ({imageUrl, price, title}: Pick<PRODUCT, 'imageUrl' | 'price' | 'title'> ) => (
     <>
         <img className="cart-item__image" src={imageUrl} />
         <p className="car-item__price">{price}</p>

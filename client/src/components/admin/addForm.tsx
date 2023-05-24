@@ -1,16 +1,16 @@
 import { SyntheticEvent } from "react"
 import { useMutation } from "react-query";
-import { ADD_PRODUCT, MutableProduct, PRODUCT, PRODUCTS } from "../../graphql/products";
+import { ADD_PRODUCT, MutableProduct } from "../../graphql/products";
 import { QueryKeys, getClient, graphqlFetcher } from "../../queryClient";
 import arrToObj from "../../util/arrToObj";
 
 const AddForm = () => {
     const queryClient = getClient()
     const { mutate: addProduct } = useMutation(
-        ({ title, imageUrl, price, description }: MutableProduct) => graphqlFetcher<{addProduct: any}>
+        ({ title, imageUrl, price, description }: MutableProduct) => graphqlFetcher
         (ADD_PRODUCT, { title, imageUrl, price, description }),
         {
-            onSuccess: ({ addProduct }) => {
+            onSuccess: () => {
                 queryClient.invalidateQueries(QueryKeys.PRODUCTS, {
                     exact: false,
                     refetchInactive: true
