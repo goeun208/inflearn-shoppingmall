@@ -8,6 +8,7 @@
   
   .cart-item {
     border: 1px solid #000;
+    border-radius: 5px;
     padding: 10px;
     &__image {
       width: 100%;
@@ -22,6 +23,7 @@
 
   .cart-willpay {
     border: 1px solid #000;
+    border-radius: 5px;
     padding: 10px;
 
     ul {

@@ -14,7 +14,12 @@ const Cart = () => {
 
     if(!cartItems.length) return <div>장바구니가 비었어요</div>
 
-    return <CartList items={cartItems} />
+    return (
+        <>  
+            <h2>장바구니</h2>
+            <CartList items={cartItems} />
+        </>
+    );
 }
 
 export default Cart

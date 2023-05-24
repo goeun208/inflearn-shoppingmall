@@ -26,11 +26,14 @@ const AddForm = () => {
         addProduct(formData as MutableProduct)
     }
     return (
-        <form onSubmit={handleSubmit}>
-            <label>상품명: <input name="title" type="text" required /></label>
-            <label>이미지URL: <input name="imageUrl" type="text" required /></label>
-            <label>상품가격: <input name="price" type="number" required min="1000" /></label>
-            <label>상세: <textarea name="description" /></label>
+        <form onSubmit={handleSubmit} className="admin-item">
+            <div className="admin-item__box">
+                <label>상품명: <input name="title" type="text" required /></label>
+                <label>이미지URL: <input name="imageUrl" type="text" required /></label>
+                <label>상품가격: <input name="price" type="number" required min="1000" /></label>
+                <label>상세: <textarea name="description" /></label>
+            </div>
+            
             <button type="submit">등록</button>
         </form>
     )

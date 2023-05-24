@@ -1,20 +1,13 @@
 import express from 'express'
-import { ApolloServer, Config, ExpressContext } from 'apollo-server-express'
+import { ApolloServer } from 'apollo-server-express'
 import schema from './schema'
 import resolvers from './resolvers'
-import { DBField, readDB } from './dbController';
 ;(async () => {
     const server = new ApolloServer({
         typeDefs: schema,
         resolvers,
-        context: {
-            db: {
-                products: readDB(DBField.PRODUCTS),
-            cart: readDB(DBField.CART)
-            }   
-        }
     })
-    
+    console.log('실행!!!!')
     const app = express()
     await server.start()
     server.applyMiddleware({

@@ -1,0 +1,18 @@
+.admin-item {
+    border: 1px solid #000000;
+    border-radius: 5px;
+    padding: 10px;
+
+
+    &__box {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        label {
+            height: 40px;
+        }
+
+        input {
+            margin-left: 20px;
+        }
+    }
+}
