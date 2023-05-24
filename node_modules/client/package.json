@@ -1,4 +1,5 @@
 {
+  "homepage": "https://goeun208.github.io/inflearn-shoppingmall",
   "name": "client",
   "private": true,
   "version": "0.0.0",
@@ -7,7 +8,9 @@
     "dev": "vite --port 3000",
     "build": "tsc && vite build",
     "lint": "eslint src --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "dependencies": {
     "@types/uuid": "^9.0.1",
@@ -29,6 +32,7 @@
     "eslint": "^8.38.0",
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-refresh": "^0.3.4",
+    "gh-pages": "^5.0.0",
     "graphql": "^16.6.0",
     "sass": "^1.62.1",
     "typescript": "^5.0.2",
