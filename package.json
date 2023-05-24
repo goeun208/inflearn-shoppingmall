@@ -11,8 +11,11 @@
     "client",
     "server"
   ],
-  "scripts" : {
+  "scripts": {
     "client": "npm workspace client run dev",
     "server": "npm workspace server run dev"
+  },
+  "dependencies": {
+    "dotenv": "^16.0.3"
   }
 }

@@ -54,18 +54,18 @@ const AdminItem = ({ id, imageUrl, price, title, description, createdAt, isEditi
         return (
             <li className="product-item">
                 <form onSubmit={handleSubmit}>
-                    <label>
+                    <div><label>
                         상품명: <input name="title" type="text" required defaultValue={title} />
-                    </label>
-                    <label>
+                    </label></div>
+                    <div><label>
                         이미지URL: <input name="imageUrl" type="text" required defaultValue={imageUrl} />
-                    </label>
-                    <label>
+                    </label></div>
+                    <div><label>
                         상품가격: <input name="price" type="number" required min="1000" defaultValue={price} />
-                    </label>
-                    <label>
+                    </label></div>
+                    <div><label>
                         상세: <textarea name="description" defaultValue={description} />
-                    </label>
+                    </label></div>
                     <button type="submit">저장</button>
                 </form>
             </li>

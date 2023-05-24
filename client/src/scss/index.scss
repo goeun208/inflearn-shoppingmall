@@ -1,6 +1,7 @@
 @import 'products';
 @import 'cart';
 @import 'payment';
+@import 'admin';
 
 body {
     margin: 0;
@@ -17,6 +18,13 @@ ul {
     margin: 0 auto;
     background-color: #f3f7ff;
 
+}
+
+.home {
+    font-size: 2rem;
+    text-align: center;
+    margin-top: 5rem;
+    font-weight: 600;
 }
 
 .gnb {
